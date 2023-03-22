@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a href="BookListServlet">図書一覧</a>
 </body>
 </html>
