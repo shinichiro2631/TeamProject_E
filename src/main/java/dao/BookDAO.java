@@ -43,7 +43,7 @@ public class BookDAO {
 						 int id = rs.getInt("id");
 			                String title = rs.getString("title");
 			                String author = rs.getString("author");
-			                int isbn = rs.getInt("isbn");
+			                String isbn = rs.getString("isbn");
 			                String new_old = rs.getString("new_old");
 			                String publisher = rs.getString("publisher");
 						
@@ -61,7 +61,37 @@ public class BookDAO {
 			}
 			return list;
 		}
-
+		//ISBNで本の検索
+		public static Book searchisbnBook(String book_isbn) {
+			String sql = "SELECT * FROM libbook WHERE isbn = ?";
+		
+			try (
+					Connection con = getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					){
+				pstmt.setString(1, book_isbn);
+				
+				try (ResultSet rs = pstmt.executeQuery()){
+					while(rs.next()) {
+						int id = rs.getInt("id");
+						String title = rs.getString("title");
+						String author = rs.getString("author");
+						String isbn = rs.getString("isbn");
+		                String new_old = rs.getString("new_old");
+		                String publisher = rs.getString("publisher");
+						
+						return new Book(id, title, author, isbn, new_old, publisher);
+						
+						
+					}
+				}
+			}catch (SQLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 	}
 
 			
