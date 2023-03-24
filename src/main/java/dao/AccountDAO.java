@@ -105,10 +105,9 @@ public class AccountDAO {
 					String user_name = rs.getString("user_name");
 					int tel = rs.getInt("tel");
 					String mail1 = rs.getString("mail");
-					String pw = rs.getString("pw");
 					String salt = rs.getString("salt");
 					
-					return new Account(id, name, user_name, tel, mail1, pw, salt);
+					return new Account(id, name, user_name, tel, mail1, null, salt, null);
 				}
 			}
 		} catch (SQLException e) {
@@ -118,5 +117,31 @@ public class AccountDAO {
 		}
 		return null;
 	}
-	
+	//アカウントIDからアカウント情報取得
+	public static Account searchidAccount(int id) {
+		String sql = "SELECT * FROM libaccount WHERE id = ?";
+		
+		try (
+				Connection con = getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				){
+			pstmt.setInt(1, id);
+
+			try (ResultSet rs = pstmt.executeQuery()){
+				
+				if(rs.next()) {
+					String name = rs.getString("name");
+					String user_name = rs.getString("user_name");
+					int tel = rs.getInt("tel");
+					String mail = rs.getString("mail");
+					return new Account(id, name, user_name, tel, mail, null, null, null);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
