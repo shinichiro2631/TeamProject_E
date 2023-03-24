@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="LoginFormServlet">Login</a>
+	<a href="RegisterFormServlet">Register</a>
 	<h1>図書一覧</h1>
 	<table border="1">
 	

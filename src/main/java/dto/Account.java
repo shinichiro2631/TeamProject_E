@@ -23,6 +23,23 @@ public class Account {
 		this.hashedPassword = hashedPassword;
 	}
 
+	
+	
+	
+	public Account(int id, String name, String user_name, int tel, String mail, String pw, String salt) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.user_name = user_name;
+		this.tel = tel;
+		this.mail = mail;
+		this.pw = pw;
+		this.salt = salt;
+	}
+
+
+
+
 	public int getId() {
 		return id;
 	}
