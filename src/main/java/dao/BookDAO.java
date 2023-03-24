@@ -43,7 +43,7 @@ public class BookDAO {
 						 int id = rs.getInt("id");
 			                String title = rs.getString("title");
 			                String author = rs.getString("author");
-			                String isbn = rs.getString("isbn");
+			                int isbn = rs.getInt("isbn");
 			                String new_old = rs.getString("new_old");
 			                String publisher = rs.getString("publisher");
 						
@@ -61,8 +61,8 @@ public class BookDAO {
 			}
 			return list;
 		}
-		
-		}
+
+	}
 
 			
 
