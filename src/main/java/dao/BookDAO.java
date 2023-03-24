@@ -62,7 +62,7 @@ public class BookDAO {
 			return list;
 		}
 		
-		}
+	}
 
 			
 
