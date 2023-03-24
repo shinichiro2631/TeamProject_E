@@ -7,7 +7,7 @@ public class Book {
     private int isbn; // ISBN
     private String new_old; // 新書・旧書
     private String publisher; // 出版社
-    
+
 	public Book(int id, String title, String author, int isbn, String new_old, String publisher) {
 		super();
 		this.id = id;
