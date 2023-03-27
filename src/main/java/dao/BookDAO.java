@@ -152,6 +152,26 @@ public class BookDAO {
 			}
 			return result;
 		}
+		
+		public static int DeleteBook(int id) {
+			String sql = "delete from libbook where id = ?";
+			int result = 0;
+			try (
+					Connection con = getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					){
+				pstmt.setInt(1, id);
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			} finally {
+				System.out.println(result + "件更新しました。");
+			}
+			return result;
+		}
+
 	}
 			
 
