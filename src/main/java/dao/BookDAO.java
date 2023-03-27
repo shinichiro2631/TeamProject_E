@@ -92,6 +92,32 @@ public class BookDAO {
 			}
 			return null;
 		}
+		//図書の新規登録
+		public static int registerBook(Book book) {
+			String sql = "INSERT INTO libbook VALUES(default, ?, ?, ?, ?, ?)";
+			
+			int result = 0;
+			try (
+					Connection con = getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					){
+				pstmt.setString(1, book.getTitle());
+				pstmt.setString(2, book.getAuthor());
+				pstmt.setString(3, book.getIsbn());
+				pstmt.setString(4, book.getNew_old());
+				pstmt.setString(5, book.getPublisher());
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			} finally {
+				System.out.println(result + "件更新しました。");
+			}
+			return result;
+		}
 	}
 
 			
