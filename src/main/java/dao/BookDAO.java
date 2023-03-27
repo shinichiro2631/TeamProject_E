@@ -61,6 +61,40 @@ public class BookDAO {
 			}
 			return list;
 		}
+
+		public static Book searchIDBook(int book_id) {
+			String sql = "SELECT * FROM libbook WHERE id = ?";
+			
+			try(
+					Connection con = getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					){
+				pstmt.setInt(1,book_id);
+			
+				try(ResultSet rs = pstmt.executeQuery()){
+					while(rs.next()) {
+						 int id = rs.getInt("id");
+			                String title = rs.getString("title");
+			                String author = rs.getString("author");
+			                String isbn = rs.getString("isbn");
+			                String new_old = rs.getString("new_old");
+			                String publisher = rs.getString("publisher");
+			                
+			                return new Book(id, title, author, isbn, new_old, publisher);
+						}
+				}
+		}
+			catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			return null;
+
+	}
+
 		//ISBNで本の検索
 		public static Book searchisbnBook(String book_isbn) {
 			String sql = "SELECT * FROM libbook WHERE isbn = ?";
@@ -119,6 +153,5 @@ public class BookDAO {
 			return result;
 		}
 	}
-
 			
 
