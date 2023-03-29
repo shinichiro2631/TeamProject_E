@@ -1,0 +1,176 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: #fff;
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: yellow;
+    float: left;
+    text-decoration: none;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .button2 {
+    background-color: #68ffaa;
+    color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #ddd;
+  }
+  
+  /* ハンバーガーメニュー開発 */
+
+html{overflow: hidden;
+}
+body {
+  font-family:"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  color: #4E3215;
+  margin:20px;
+}
+.ham{
+  float: right;
+}
+
+.checkbox-bottun{
+  display: none;
+}
+
+label{
+  position: relative;  /* labelを基準にする */
+  width: 30px;
+  height: 30px;
+  display: block;  /* アイコンを右にしたいので、ブロック要素にする */
+  z-index: 10;
+}
+
+/* ハンバーガーメニューのボタン */
+span{
+  display: inline-block;  /* インライン要素なのでブロック要素にし、大きさを指定 */
+  content: "";  /* spanの中身を作る */
+  width: 30px;
+  height: 4px;
+  background-color: white;  /* ボタンの色 */
+  position: absolute;  /* labelを基準とし位置を指定 */
+  transition: all 0.4s;  /* 全ての動きが0.4sかけて変化 */
+}
+/* ボタン上 */
+span:nth-child(1){
+  top: 0;  /* 上から0 */
+}
+/* ボタン真ん中 */
+span:nth-child(2){
+  top: 13px;  /* 上から13px */
+}
+/* ボタン下 */
+span:nth-child(3){
+  top: 26px;  /* 上から26px */
+}
+
+/* ボタンの動き */
+/* ボタン真ん中 */
+#check:checked + label span:nth-child(2){
+  opacity: 0;  /* 透明にする */
+}
+/* ボタン上 */
+#check:checked + label span:nth-child(1){
+  transform: translateY(13px) rotate(-45deg);  /* Y座標13、45度反時計回りに回転 */
+}
+/* ボタン下 */
+#check:checked + label span:nth-child(3){
+  transform: translateY(-13px) rotate(45deg);  /* Y座標-13、45度時計回りに回転 */
+}
+
+
+/* ナビメニュー */
+nav{
+  position: absolute;
+  background-color: black;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(110%);  /* ナビメニューを一旦画面外に */
+
+  /*
+  表示・非表示の別の方法① 
+  height: 0;
+  overflow: hidden;
+  */
+
+  /*
+  表示・非表示の別の方法②
+  visibility: hidden;
+  opacity: 0; 
+  */
+
+  /* 
+  表示・非表示の別の方法③
+  display: none; 
+  */
+  
+}
+ul{
+  text-align: center;
+  padding: 0;
+  list-style-type: none;
+  /* メニューを上下左右真ん中に */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.menu{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+a{
+	text-decoration:none;
+}
+
+/* ナビメニューの動き */
+#check:checked ~ nav{
+  transform: translateX(0%);  /* #checkがcheckedされたらナビメニューを表示 */
+    
+  /*
+  表示・非表示の別の方法①  
+  width: 100%;
+  height: 100%; 
+  */
+
+  /* 
+  表示・非表示の別の方法②
+  visibility: visible;
+  opacity: 1; 
+  */
+  
+  /* 
+  表示・非表示の別の方法③
+  display: block; 
+  */
+  
+} 
+
+  
+  

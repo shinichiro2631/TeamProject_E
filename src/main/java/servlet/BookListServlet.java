@@ -39,11 +39,9 @@ public class BookListServlet extends HttpServlet {
 		// 取得したリストをリクエストスコープに保管(JSPに渡すため)
 		request.setAttribute("bookList", list);
 		
-		String view = "webapp/index.jsp";
+		String view = "WEB-INF/view/BookList.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
-		request.setAttribute("bookList", list);
-
 	}
 
 	/**

@@ -31,7 +31,7 @@ public class BookDAO {
 		
 		//商品を全権取得するためのメソッド
 		public static List<Book>selectListBook(){
-			String sql = "SELECT * FROM libbook";
+			String sql = "SELECT * FROM libBook";
 			List<Book> list = new ArrayList<>();
 			
 			try(
@@ -41,7 +41,7 @@ public class BookDAO {
 				try(ResultSet rs = pstmt.executeQuery()){
 					while(rs.next()) {
 						 int id = rs.getInt("id");
-			                String title = rs.getString("title");
+						    String title = rs.getString("title");
 			                String author = rs.getString("author");
 			                String isbn = rs.getString("isbn");
 			                String new_old = rs.getString("new_old");
@@ -80,7 +80,7 @@ public class BookDAO {
 			                String new_old = rs.getString("new_old");
 			                String publisher = rs.getString("publisher");
 			                
-			                return new Book(id, title, author, isbn, new_old, publisher);
+			                return new Book(id,title,author,isbn,new_old,publisher);
 						}
 				}
 		}
