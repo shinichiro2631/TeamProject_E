@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<header>
@@ -29,9 +29,15 @@
 				<!--ナビメニュー-->
 				<nav class="ham_menu">
 					<ul>
-						<li><a href="" class="menu">メニュー1</a></li>
-						<li><a href="" class="menu">メニュー2</a></li>
-						<li><a href="" class="menu">メニュー3</a></li>
+						<li><a href="index.jsp" class="menu">ＴＯＰ</a></li>
+						<li><a href="BookFormServlet" class="menu">図書新規登録</a></li>
+						<li><a href="" class="menu">図書内容変更</a></li>
+						<li><a href="lend.jsp" class="menu">図書貸出</a></li>
+						<li><a href="" class="menu">図書返却</a></li>
+						<li><a href="" class="menu">貸出・返却履歴</a></li>
+						<li><a href="" class="menu">延滞者一覧</a></li>
+						<li><a href="ReviewListServlet" class="menu">本の口コミ</a></li>
+						<li><a href="BookDeleteFormServlet" class="menu">図書消去</a></li>
 					</ul>
 				</nav>
 				<!--ナビメニュー終-->
@@ -56,7 +62,7 @@
 				type="submit"></input>
 		</form>
 
-		<tr>
+			<tr>
 			<th>ID</th>
 			<th>図書名</th>
 			<th>著者名</th>
