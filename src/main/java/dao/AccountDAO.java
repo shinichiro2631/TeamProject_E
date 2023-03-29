@@ -45,7 +45,7 @@ public class AccountDAO {
 				){
 			pstmt.setString(1, account.getName());
 			pstmt.setString(2, account.getUser_name());
-			pstmt.setInt(3, account.getTel());
+			pstmt.setString(3, account.getTel());
 			pstmt.setString(4, account.getMail());
 			pstmt.setString(5, hashedPw);
 			pstmt.setString(6, salt);
@@ -103,7 +103,7 @@ public class AccountDAO {
 					int id = rs.getInt("id");
 					String name = rs.getString("name");
 					String user_name = rs.getString("user_name");
-					int tel = rs.getInt("tel");
+					String tel = rs.getString("tel");
 					String mail1 = rs.getString("mail");
 					String salt = rs.getString("salt");
 					
@@ -132,7 +132,7 @@ public class AccountDAO {
 				if(rs.next()) {
 					String name = rs.getString("name");
 					String user_name = rs.getString("user_name");
-					int tel = rs.getInt("tel");
+					String tel = rs.getString("tel");
 					String mail = rs.getString("mail");
 					return new Account(id, name, user_name, tel, mail, null, null, null);
 				}

@@ -47,8 +47,7 @@ public class RegisterConfirmServlet extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		String user_name = request.getParameter("user_name");
-		String telstr = request.getParameter("tel");
-		int tel = Integer.parseInt(telstr);
+		String tel = request.getParameter("tel");
 		String mail = request.getParameter("mail");
 		String pw = request.getParameter("pw");
 		
