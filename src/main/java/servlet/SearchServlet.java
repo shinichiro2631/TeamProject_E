@@ -38,7 +38,7 @@ public class SearchServlet extends HttpServlet {
 		    
 		    // 検索結果をリクエスト属性に設定して、JSPに渡す
 		    request.setAttribute("bookList", bookList);
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/BookListServlet");
 		    dispatcher.forward(request, response);
 		  }
 		  
