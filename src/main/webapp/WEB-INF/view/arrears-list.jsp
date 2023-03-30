@@ -53,8 +53,8 @@
 		request.setCharacterEncoding("UTF-8");
 		List<Arrears> arlist = (ArrayList<Arrears>)request.getAttribute("arrearslist");
 	%>
-	<div>
-	<div>
+	<div class="main">
+	<div class="main-content">
 		<h1>延滞者一覧</h1>
 		<table>
 			<tr><th>選択</th><th>名前</th><th>図書ID</th><th>図書名</th><th>貸出日</th><th>返却期日</th></tr>

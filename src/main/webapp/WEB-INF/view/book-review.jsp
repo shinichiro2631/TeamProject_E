@@ -19,8 +19,8 @@
 		Book bk = (Book)request.getAttribute("book");
 		List<Review> rvlist = (ArrayList<Review>)request.getAttribute("reviewlist");
 	%>
-	<div>
-	<div>
+	<div class="main">
+	<div class="main-content">
 		<table>
 			<tr>
 			<td>図書名</td><td><%=bk.getTitle() %></td>

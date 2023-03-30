@@ -6,8 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>新規登録画面</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="main">
+	<div class="main-content">
 	<%
 		request.setCharacterEncoding("UTF-8");
 		String errorCode = request.getParameter("error");
@@ -41,5 +44,7 @@
 		<%
 			}
 		%>
+</div>
+</div>
 </body>
 </html>

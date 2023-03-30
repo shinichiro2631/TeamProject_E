@@ -5,8 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>図書登録画面</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="main">
+	<div class="main-content">
 	<h1>図書登録画面</h1>
 	<form action="RegisterBookServlet" method="post">
 		図書名:<input type="text" name="title"><br>
@@ -19,5 +22,7 @@
 		<input type="submit" value="登録">
 	</form>
 	<a href="BookListServlet">戻る</a>
+</div>
+</div>
 </body>
 </html>
