@@ -18,6 +18,6 @@
 		冊数：<input type="text" name="count"><br>
 		<input type="submit" value="登録">
 	</form>
-	<a href="./">戻る</a>
+	<a href="BookListServlet">戻る</a>
 </body>
 </html>

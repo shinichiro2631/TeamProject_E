@@ -3,7 +3,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Book"%>
-
+<%ArrayList<Book> bookList = (ArrayList<Book>)request.getAttribute("bookList"); %>
 
 <!DOCTYPE html>
 <html>
@@ -20,16 +20,14 @@
 
 				<!--ボタン-->
 				<input id="check" type="checkbox" class="checkbox-bottun"> <label
-					for="check"> <span></span>
-				<!--上--> <span></span>
-				<!--真ん中--> <span></span>
-				<!--下-->
+					for="check"> <span></span> <!--上--> <span></span> <!--真ん中-->
+					<span></span> <!--下-->
 				</label>
 				<!--ボタン終-->
 				<!--ナビメニュー-->
 				<nav class="ham_menu">
 					<ul>
-						<li><a href="index.jsp" class="menu">ＴＯＰ</a></li>
+						<li><a href="BookListServlet" class="menu">ＴＯＰ</a></li>
 						<li><a href="BookFormServlet" class="menu">図書新規登録</a></li>
 						<li><a href="" class="menu">図書内容変更</a></li>
 						<li><a href="lend.jsp" class="menu">図書貸出</a></li>
@@ -45,30 +43,27 @@
 			</div>
 
 		</main>
-		<a href="index.jsp"><div class="logo">図書管理システム</div></a>
+		<a href="BookListServlet"><div class="logo">図書管理システム</div></a>
 		<div class="buttons">
 			<a class="button" href="LoginFormServlet">ログイン</a> <a class="button2"
 				href="RegisterFormServlet">新規登録</a>
 		</div>
 	</header>
 
-
+	
 	<a href="MailSenderServlet">メール送信</a>
-	<h1>図書一覧</h1>
+	<h3>図書一覧</h3>
+	<!--図書検索機能-->
+	<form method="get" action="SearchServlet">
+    <input type="text" name="keyword" value="">
+    <input type="submit" value="検索">
+	</form>
+		
 	<table border="1">
 
-		<form method="GET" action="SearchServlet">
-			<input type="text" name="bookname" placeholder="図書名を入力"> <input
-				type="submit"></input>
-		</form>
 
-			<tr>
-			<th>ID</th>
+		<tr>
 			<th>図書名</th>
-			<th>著者名</th>
-			<th>ISBN</th>
-			<th>新本・旧本</th>
-			<th>出版社</th>
 		</tr>
 		<%
 		List<Book> list = (ArrayList<Book>) request.getAttribute("bookList");
@@ -76,12 +71,7 @@
 			for (Book s : list) {
 		%>
 		<tr>
-			<td><%=s.getId()%></td>
-			<td><%=s.getTitle()%></td>
-			<td><%=s.getAuthor()%></td>
-			<td><%=s.getIsbn()%></td>
-			<td><%=s.getNew_old()%></td>
-			<td><%=s.getPublisher()%></td>
+			<td><%=s.getTitle()%><a class="kuwasiku" href="">詳しく見る</a></td>
 		</tr>
 		<%
 		}
@@ -89,7 +79,6 @@
 		%>
 
 	</table>
-<a href="BookListServlet">試し</a>
 
 
 

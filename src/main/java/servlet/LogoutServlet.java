@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
 		//セッションスコープのデータ全削除
 		session.invalidate();
 		
-		String view = "./";
+		String view = "BookListServlet";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

@@ -39,6 +39,13 @@ header {
     background-color: #ddd;
   }
   
+  .kuwasiku{
+	font-size: 10px;
+	color:blue;
+} 
+  
+  
+  
   /* ハンバーガーメニュー開発 */
 
 html{overflow: hidden;

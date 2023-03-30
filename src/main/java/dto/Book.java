@@ -16,6 +16,17 @@ public class Book {
 		this.new_old = new_old;
 		this.publisher = publisher;
 	}
+	
+	
+	public Book(String title) {
+		super();
+		this.title = title;
+	}
+
+
+	public Book(int id2, String title2) {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 	public int getId() {
 		return id;
 	}
