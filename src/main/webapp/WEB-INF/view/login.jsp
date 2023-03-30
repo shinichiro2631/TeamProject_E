@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<body>
+<div class="main">
+	<div class="main-content">
 	<%
 		request.setCharacterEncoding("UTF-8");
 		if(request.getParameter("error") != null){	
@@ -31,5 +33,7 @@
 	<%
 		}
 	%>
+</div>
+</div>
 </body>
 </html>
