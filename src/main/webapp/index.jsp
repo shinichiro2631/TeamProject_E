@@ -51,7 +51,6 @@
 	</header>
 
 	
-	<a href="MailSenderServlet">メール送信</a>
 	<h3>図書一覧</h3>
 	<!--図書検索機能-->
 	<form method="get" action="SearchServlet">
