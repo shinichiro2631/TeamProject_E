@@ -133,13 +133,6 @@ public class BookDAO {
 	    return list;
 	}
 
-	
-	
-	
-	
-	
-	
-
 	//図書の新規登録
 	public static int registerBook(Book book) {
 		String sql = "INSERT INTO libbook VALUES(default, ?, ?, ?, ?, ?)";
@@ -165,7 +158,7 @@ public class BookDAO {
 		}
 		return result;
 	}
-
+    //図書削除
 	public static int DeleteBook(int id) {
 		String sql = "delete from libbook where id = ?";
 		int result = 0;
@@ -184,5 +177,38 @@ public class BookDAO {
 		return result;
 	}
 
+	public static Book select_book(Book select){
+		String sql = "SELECT * FROM libbook WHERE isbn = ?";
+		
+				
+		try (
+				Connection con = getConnection();	
+				PreparedStatement pstmt = con.prepareStatement(sql);			
+				){
+			
+			pstmt.setString(1, select.getIsbn());
+			
+			try (ResultSet rs = pstmt.executeQuery()){
+				
+				if(rs.next()) {
+				    String title = rs.getString("title");
+				    String author = rs.getString("author");
+				    String isbn = rs.getString("isbn");
+				    String new_old = rs.getString("new_old");
+				    String publisher = rs.getString("publisher");
+				
+				    Book result = new Book(title, author, isbn, new_old, publisher);
+					return result;
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 }
