@@ -8,12 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import dto.History;
 import java.util.Date;
 import java.util.List;
 
 import dto.Arrears;
+import dto.History;
 
 public class HistoryDAO {
 	private static Connection getConnection() throws URISyntaxException, SQLException {
@@ -31,7 +30,7 @@ public class HistoryDAO {
 	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 	public static int registerHistory(int book_id,int account_id,int due_date){
-		String sql = "INSERT INTO History VALUES(default,?,?,current_date,null, currentdate + cast( '" + due_date +  " days'as INTERVAL))";
+		String sql = "INSERT INTO History VALUES(default,?,?,current_date,null, current_date + cast( '" + due_date +  " days'as INTERVAL))";
 		int result=0;
 		
 		try (

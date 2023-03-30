@@ -33,7 +33,7 @@
 						<li><a href="LendServlet" class="menu">図書貸出</a></li>
 						<li><a href="" class="menu">図書返却</a></li>
 						<li><a href="" class="menu">貸出・返却履歴</a></li>
-						<li><a href="ArrearsListServlet" class="">延滞者一覧</a></li>
+						<li><a href="ArrearsListServlet" class="menu">延滞者一覧</a></li>
 						<li><a href="ReviewListServlet" class="menu">本の口コミ</a></li>
 						<li><a href="BookDeleteFormServlet" class="menu">図書消去</a></li>
 					</ul>

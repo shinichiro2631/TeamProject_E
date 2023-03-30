@@ -14,5 +14,6 @@
 図書ID
 <input type="text" name="Book"><br>
 <input type="submit" value="貸出">
+</form>
 </body>
 </html>
