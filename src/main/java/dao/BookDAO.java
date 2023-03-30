@@ -116,21 +116,31 @@ public class BookDAO {
 
 	//キーワードで本の検索
 	public static List<Book> searchBook(String keyword) {
-	    String sql = "SELECT title FROM libBook WHERE title LIKE ?";
-	    List<Book> list = new ArrayList<>();
-	    try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
-	        pstmt.setString(1, "%" + keyword + "%");
-	        ResultSet rs = pstmt.executeQuery();
-
-	        while (rs.next()) {
-	            Book book = new Book( rs.getString("title"));
-	            list.add(book);
-	        }
-	    } catch (URISyntaxException | SQLException e) {
-	        e.printStackTrace();
-	    }
-
-	    return list;
+	    String sql = "SELECT * FROM libBook WHERE title LIKE ?";
+	    List<Book>  result = new ArrayList<>();
+	    
+	    try (
+				Connection con = getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				){
+	    	pstmt.setString(1, "%" + keyword + "%");
+	    	try (ResultSet rs = pstmt.executeQuery()){
+	    		while(rs.next()) {
+	    			int id = rs.getInt("id");
+	    			String title = rs.getString("title");
+	    			String isbn = rs.getString("isbn");
+	    			
+	    			Book book = new Book(id, title, null, isbn, null, null);
+	    			
+	    			result.add(book);
+	    		}
+	    	}
+	    }catch (SQLException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	

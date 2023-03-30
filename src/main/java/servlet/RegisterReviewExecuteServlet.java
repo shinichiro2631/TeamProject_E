@@ -45,7 +45,7 @@ public class RegisterReviewExecuteServlet extends HttpServlet {
 		
 		String text = request.getParameter("text");
 		String isbn = request.getParameter("isbn");
-		Review review = new Review(0, account.getId(), text, isbn);
+		Review review = new Review(0, account.getId(),null,null, text, isbn);
 		int i = ReviewDAO.registerReview(review);
 	}
 

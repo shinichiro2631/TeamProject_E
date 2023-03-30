@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,10 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.AccountDAO;
 import dao.BookDAO;
 import dao.ReviewDAO;
-import dto.Account;
 import dto.Book;
 import dto.Review;
 
@@ -42,12 +39,6 @@ public class ReviewListServlet extends HttpServlet {
 		request.setAttribute("book", book);
 		List<Review> review = ReviewDAO.getReview(isbn);
 		request.setAttribute("reviewlist", review);
-		List<Account> account = new ArrayList<>();
-		for(Review r : review) {
-			Account ac = AccountDAO.searchidAccount(r.getAccount_id());
-			account.add(ac);
-		}
-		request.setAttribute("accountlist", account);
 		String view = "WEB-INF/view/book-review.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);

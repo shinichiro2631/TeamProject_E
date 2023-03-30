@@ -51,7 +51,7 @@ public class ReviewDAO {
 	}
 	//本の口コミ閲覧
 	public static List<Review> getReview(String isbn){
-		String sql = "SELECT * FROM review WHERE isbn = ?";
+		String sql = "SELECT * FROM review r JOIN libaccount a ON r.account_id = a.id WHERE r.isbn = ?";
 		List<Review> result = new ArrayList<>();
 		try (
 				Connection con = getConnection();
@@ -62,9 +62,11 @@ public class ReviewDAO {
 				while(rs.next()) {
 					int id = rs.getInt("id");
 					int account_id = rs.getInt("account_id");
+					String user_name = rs.getString("user_name");
+					String name = rs.getString("name");
 					String book_review = rs.getString("book_review");
 					
-					Review review = new Review(id, account_id, book_review, isbn);
+					Review review = new Review(id, account_id,user_name,name, book_review, isbn);
 					
 					result.add(review);
 				}
