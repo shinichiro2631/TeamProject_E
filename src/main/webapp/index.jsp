@@ -30,7 +30,7 @@
 						<li><a href="BookListServlet" class="menu">ＴＯＰ</a></li>
 						<li><a href="BookFormServlet" class="menu">図書新規登録</a></li>
 						<li><a href="" class="menu">図書内容変更</a></li>
-						<li><a href="lend.jsp" class="menu">図書貸出</a></li>
+						<li><a href="LendServlet" class="menu">図書貸出</a></li>
 						<li><a href="" class="menu">図書返却</a></li>
 						<li><a href="" class="menu">貸出・返却履歴</a></li>
 						<li><a href="" class="menu">延滞者一覧</a></li>

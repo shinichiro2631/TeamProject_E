@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import dto.History;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class HistoryDAO {
 	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 	public static int registerHistory(int book_id,int account_id,int due_date){
-		String sql = "INSERT INTO History VALUES (?,?,current_date,null, currentdate + cast( '" + due_date +  " days'as INTERVAL)";
+		String sql = "INSERT INTO History VALUES(default,?,?,current_date,null, currentdate + cast( '" + due_date +  " days'as INTERVAL))";
 		int result=0;
 		
 		try (
@@ -70,6 +72,32 @@ public class HistoryDAO {
 			}
 			return;
 	 }
+
+	 public static List<History> selectListHistory() {
+			String sql = "SELECT * FROM History";
+			List<History> list = new ArrayList<>();
+
+			try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+				try (ResultSet rs = pstmt.executeQuery()) {
+					while (rs.next()) {
+						int book_id = rs.getInt("boook_id");
+						int account_id = rs.getInt("account_id");
+						String loan_date = rs.getString("loan_date");
+						String return_date = rs.getString("return_date");
+						String due_date = rs.getString("due_date");
+
+						History history = new History(book_id,account_id,loan_date,return_date,due_date);
+						list.add(history);
+					}
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
 	//延滞者一覧
 	public static List<Arrears> arrearsList(){
 			 String sql = "SELECT * FROM history h JOIN libaccount a ON h.account_id = a.id JOIN libbook b ON h.book_id = b.id WHERE h.return_date IS NULL AND h.due_date < current_date";
