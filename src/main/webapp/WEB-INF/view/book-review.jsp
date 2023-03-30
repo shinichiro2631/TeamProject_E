@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>本の口コミ</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<%
@@ -17,7 +18,6 @@
 		Account ac = (Account)session.getAttribute("user");
 		Book bk = (Book)request.getAttribute("book");
 		List<Review> rvlist = (ArrayList<Review>)request.getAttribute("reviewlist");
-		List<Account> aclist = (ArrayList<Account>)request.getAttribute("accountlist");
 	%>
 	<div>
 	<div>
@@ -39,12 +39,10 @@
 		</form>
 	<%}%>
 		<table>
-		<%for(Account a : aclist){ 
-			for(Review rv : rvlist){%>
-			<tr><td><%=a.getUser_name()%></td></tr>
+		<%for(Review rv : rvlist){%>
+			<tr><td><%=rv.getUser_name()%></td></tr>
 			<tr><td><%=rv.getBook_review() %></td></tr>
-		<% 	}
-		  }%>
+		<%}%>
 		</table>
 	</div>
 	</div>
