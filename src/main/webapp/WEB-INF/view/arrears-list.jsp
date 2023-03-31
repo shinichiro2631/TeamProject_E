@@ -45,8 +45,7 @@
 		</main>
 		<a href="index.jsp"><div class="logo">図書管理システム</div></a>
 		<div class="buttons">
-			<a class="button" href="LoginFormServlet">ログイン</a> <a class="button2"
-				href="RegisterFormServlet">新規登録</a>
+			<a class="button" href="LogoutServlet">ログアウト</a>
 		</div>
 	</header>
 	<%
