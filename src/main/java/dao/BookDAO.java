@@ -177,7 +177,7 @@ public class BookDAO {
 		return result;
 	}
 
-	public static Book select_book(Book select){
+	public static Book select_book(String isbn2){
 		String sql = "SELECT * FROM libbook WHERE isbn = ?";
 		
 				
@@ -186,7 +186,7 @@ public class BookDAO {
 				PreparedStatement pstmt = con.prepareStatement(sql);			
 				){
 			
-			pstmt.setString(1, select.getIsbn());
+			pstmt.setString(1, isbn2);
 			
 			try (ResultSet rs = pstmt.executeQuery()){
 				

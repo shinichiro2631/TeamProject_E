@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.BookDAO;
+import dto.Book;
+
 /**
  * Servlet implementation class BookUpDateServlet
  */
@@ -28,6 +31,15 @@ public class BookUpDateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		String isbn = request.getParameter("isbn");
+		Book count = BookDAO.select_book(isbn);
+		
+		Book result = new Book(count);
+		request.setAttribute("isbn", result);
+		
+		
 		String view = "WEB-INF/view/book-update.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
